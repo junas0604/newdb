@@ -7,24 +7,25 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 
 app.post("/", async (req, res) => {
-  const { email, password } = req.body
+  const { email, password } = req.body;
 
   try {
-    const check = await collection.findOne({ email: email })
+    const user = await collection.findOne({ email: email,password:password});
 
-    if (check) {
-      res.json("exist")
+    if (user) {
+      if (user.password === password) {
+        res.json("exist"); // Valid password
+      } else {
+        res.json("notexist"); // Invalid password
+      }
+    } else {
+      res.json("notexist"); // User does not exist
     }
-    else {
-      res.json("notexist")
-    }
-
+  } catch (e) {
+    res.json("fail");
   }
-  catch (e) {
-    res.json("fail")
-  }
+});
 
-})
 async function getData() {
   try {
     await mongoose.connect("mongodb+srv://your-mongodb-connection-string");
@@ -83,4 +84,4 @@ app.get('/', cors(), async (req, res) => {
     console.error('Error retrieving data from MongoDB:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
-});
+})

@@ -13,33 +13,29 @@ import {
 function Login() {
   const history = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   async function submit(e) {
     e.preventDefault();
-
+  
     try {
-      await axios
-        .post("http://localhost:8000/", {
-          email,
-          password,
-        })
-        .then((res) => {
-          if (res.data === "exist") {
-            history("/home", { state: { id: email } });
-          } else if (res.data === "notexist") {
-            alert("User has not signed up");
-          }
-        })
-        .catch((e) => {
-          alert("Wrong details");
-          console.log(e);
-        });
-    } catch (e) {
-      console.log(e);
+      const response = await axios.post("http://localhost:8000/", {
+        email,
+        password,
+      });
+  
+      if (response.data === "exist") {
+        history("/home", { state: { id: email } });
+      } else if (response.data === "notexist") {
+        alert("Invalid email or password");
+      }
+    } catch (error) {
+      alert("Wrong details");
+      console.log(error);
     }
   }
+  
 
 
   return (
@@ -121,4 +117,4 @@ function Login() {
   );
 }
 
-export default Login
+export default Login;
