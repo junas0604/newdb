@@ -55,7 +55,7 @@ app.post("/signup", async (req, res) => {
   }
 
   try {
-    const check = await collection.findOne({ email: email })
+    const check = await collection.findOne({ email: email,password:password })
 
     if (check) {
       res.json("exist")

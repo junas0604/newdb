@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 function Profile() {
@@ -9,24 +8,27 @@ function Profile() {
     fetchData();
   }, []);
 
-  async function fetchData() {
+  const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/");
-      setData(response.data);
+      const response = await fetch("http://localhost:8000/data");
+      const jsonData = await response.json();
+      setData(jsonData);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  }
+  };
 
   return (
     <div>
-      <h1>Welcome to Profile page</h1>
+      <h1>Welcome to the Profile page</h1>
 
-      {/* Render the fetched data */}
+      
+
+      <h2>User Data:</h2>
       <ul>
-        {data.map((item) => (
-          <li key={item._id}>
-            Email: {item.email}, Password: {item.password}, Username: {item.username}, Re-entered Password: {item.repassword}
+        {data.map((check) => (
+          <li key={check._id}>
+            Email: {check.email}, Password: {check.password}
           </li>
         ))}
       </ul>
@@ -41,4 +43,3 @@ function Profile() {
 }
 
 export default Profile;
-
