@@ -1,66 +1,86 @@
-  import React from "react"
-  import { useLocation,Link } from 'react-router-dom';
-  import {
-    MDBContainer,
-    MDBCard,
-    MDBCardBody
-  } from "mdb-react-ui-kit";
-  
+import React from "react";
+import { useNavigate,useLocation} from "react-router-dom";
+import { MDBContainer, MDBCard, MDBCardBody, MDBBtn } from "mdb-react-ui-kit";
 
-  function Home() {
+function Home() {
 
-      const location = useLocation()
-      return (
-          <form>
-              <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="/Homepage">Jail Management System</a>
+  const history = useNavigate();
+  const location = useLocation();
 
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"/>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="/Homepage">Home <span class="sr-only"></span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/Login">Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/Signup">Registration</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+  const handleProfileClick = () => {
+    history("/Profile");
+  };
 
-        <MDBContainer fluid className='d-flex align-items-center justify-content-center bg-image' style={{ backgroundColor: 'Grey' }}>
-        <div className='mask gradient-custom-3'>
-          <MDBCard className='m-5' style={{ maxWidth: '600px' }}>
-            <MDBCardBody className='px-5'>
-              <h2 className="text-uppercase text-center mb-5">Jail Guard Officer Home Page</h2>
-              <p>  </p>
-              <p>  </p>
-              <h1>Hello {location.state.id} and welcome to the home</h1>
-              
+  const handleProfileClick2 = () => {
+    history("/Login");
+  };
+
+  return (
+    <form>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <a className="navbar-brand" href="/Homepage">
+          Jail Management System
+        </a>
+
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon" />
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <a className="nav-link" href="/Homepage">
+                Home <span className="sr-only"></span>
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/Login">
+                Login
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/Signup">
+                Registration
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <MDBContainer fluid className="d-flex align-items-center justify-content-center bg-image" style={{ backgroundColor: "Grey" }} >
+        <div className="mask gradient-custom-3">
+          <MDBCard className="m-5" style={{ maxWidth: "600px" }}>
+            <MDBCardBody className="px-5">
+              <h2 className="text-uppercase text-center mb-5">
+               Hello {location.state.id} Welcome to the Jail Guard Home
+              </h2>
+
+              {/* Profile Button */}
               <div className="text-center">
-                    <button  style={{ backgroundColor: 'blue', color: 'white',}}>
-                        <Link to="/"> Logout</Link>
-                    </button>
+              <MDBBtn className="mb-4" onClick={handleProfileClick}>
+                Profile
+              </MDBBtn>
               </div>
 
               <div className="text-center">
-                    <button  style={{ backgroundColor: 'blue', color: 'white',}}>
-                        <Link to="/Profile"> Profile</Link>
-                    </button>
+              <MDBBtn className="mb-4" onClick={handleProfileClick2}>
+                Logout
+              </MDBBtn>
               </div>
-
-              </MDBCardBody>
+             
+            </MDBCardBody>
           </MDBCard>
         </div>
       </MDBContainer>
+    </form>
+  );
+}
 
-          </form>
-
-      );
-  }
-  export default Home;
+export default Home;
