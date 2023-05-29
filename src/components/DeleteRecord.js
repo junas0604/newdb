@@ -4,6 +4,7 @@ import axios from 'axios';
 import { MDBCard, MDBCardBody } from "mdb-react-ui-kit";
 
 function DeleteRecord() {
+
   const [email, setEmail] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -60,7 +61,7 @@ function DeleteRecord() {
           </ul>
         </div>
       </nav>
-
+   
       <Container fluid style={{ backgroundColor: 'Grey', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <div className='mask gradient-custom-3'>
           <MDBCard className='m-5' style={{ maxWidth: '600px' }}>
@@ -96,4 +97,4 @@ function DeleteRecord() {
   );
 }
 
-export default DeleteRecord;
+export default DeleteRecord

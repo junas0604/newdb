@@ -68,7 +68,7 @@ function Home() {
               {/* Profile Button */}
               <div className="text-center">
               <MDBBtn className="mb-4" onClick={handleProfileClick}>
-                Profile
+                Delete Account
               </MDBBtn>
               </div>
 
