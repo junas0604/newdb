@@ -57,6 +57,11 @@ function Login() {
             <li class="nav-item">
               <a class="nav-link" href="/Signup">Registration</a>
             </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/DeleteRecord">
+                Delete
+              </a>
+            </li>
           </ul>
         </div>
       </nav>

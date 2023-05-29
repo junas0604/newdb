@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import {useNavigate} from "react-router-dom";
+import React from "react";
+import { useNavigate} from "react-router-dom";
 import {
   MDBContainer,
   MDBCard,
@@ -7,28 +7,25 @@ import {
   MDBBtn
 } from "mdb-react-ui-kit";
 
-function Profile() {
-  const [data, setData] = useState([]);
-  const history = useNavigate();
 
+function Profile() {
+  const history = useNavigate();
+  
 
   const handleProfileClick = () => {
     history("/Login");
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch("http://localhost:8000/data");
-      const jsonData = await response.json();
-      setData(jsonData);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+  const handleProfileClick1 = () => {
+    history("/DeleteRecord");
   };
+
+
+
+  
+  
+
+
 
   return (
     <form>
@@ -78,21 +75,16 @@ function Profile() {
               </h2>
 
               <h2>User Data:</h2>
-              <ul>
-                {data.map((check) => (
-                  <li key={check._id}>
-                    Email: {check.email}, Password: {check.password}
-                  </li>
-                ))}
-              </ul>
 
-              
               <div className="text-center">
-              <MDBBtn className="mb-4" onClick={handleProfileClick}>
-                Logout
-              </MDBBtn>
+                <MDBBtn className="mb-4" onClick={handleProfileClick}>
+                  Logout
+                </MDBBtn>
               </div>
 
+              <MDBBtn className="mb-4" onClick={handleProfileClick1}>
+                  Delete an Account
+                </MDBBtn>
 
             </MDBCardBody>
           </MDBCard>

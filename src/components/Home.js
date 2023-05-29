@@ -15,6 +15,8 @@ function Home() {
     history("/Login");
   };
 
+ 
+
   return (
     <form>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -50,6 +52,7 @@ function Home() {
                 Registration
               </a>
             </li>
+            
           </ul>
         </div>
       </nav>

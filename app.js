@@ -76,6 +76,23 @@ app.listen(8000, () => {
   console.log("port connected");
 })
 
+app.delete('/deleterecord', async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const deletedRecord = await collection.findOneAndDelete({ email: email });
+
+    if (deletedRecord) {
+      res.json('Record successfully deleted.');
+    } else {
+      res.json('Record not found.');
+    }
+  } catch (error) {
+    console.error('Error deleting record:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 app.get('/', cors(), async (req, res) => {
   try {
     const data = await collection.find();
