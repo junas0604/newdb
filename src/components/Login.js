@@ -36,83 +36,106 @@ function Login() {
     }
   }
   
-
-
   return (
     <form>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="/Homepage">Jail Management System</a>
+     <nav className="navbar navbar-expand-lg navbar-light bg-light">
+  <a className="navbar-brand" href="/">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Bureau_of_Jail_Management_and_Penology.png" alt="Logo" width="40" height="40" className="d-inline-block align-top" />
+    <span className="ml-2" style={{ marginLeft: '10px' }}>BJMP Employee Scheduling</span>
+  </a>
+  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
+  </button>
+  <div className="collapse navbar-collapse" id="navbarNav">
+    <ul className="navbar-nav">
+      <li className="nav-item">
+        <a className="nav-link" href="/Home">Home <span className="sr-only"></span></a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="/Login">Login</a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="/Signup">Registration</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="/Homepage">Home <span class="sr-only"></span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/Login">Login</a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link" href="/Signup">Registration</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
 
-      <MDBContainer fluid className='d-flex align-items-center justify-content-center bg-image' style={{ backgroundColor: 'Grey' }}>
-        <div className='mask gradient-custom-3'>
-          <MDBCard className='m-5' style={{ maxWidth: '600px' }}>
-            <MDBCardBody className='px-5'>
-              <h2 className="text-uppercase text-center mb-5">Jail Guard Officer Login Form</h2>
+      <div
+        className="bg-image"
+        style={{
+          backgroundImage: `url("https://www.bjmp.gov.ph/images/files/107507100_197367938408005_8328798389745902524_o.jpg")`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+          height: '110vh',
+        }}
+      >
+         <div
+          className="overlay"
+          style={{
+            backgroundColor: 'rgba(0, 0, 0, 0.6)',
+            position: 'absolute',
+            top: 65,
+            left: 0,
+            width: '100%',
+            height: '110%',
+          }}
+        ></div>
+        
+        <MDBContainer fluid className="d-flex align-items-center justify-content-center">
+          <div className='mask gradient-custom-3'>
+            <MDBCard className='m-5' style={{ maxWidth: '600px' }}>
+              <MDBCardBody className='px-5 text-center'>
+                <h2 className="text-uppercase text-center mb-5">Jail Guard Officer Login Form</h2>
 
-              <MDBInput
-                wrapperClass="mb-4"
-                label="Your Email"
-                size="lg"
-                id="Email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
-              />
-
-              <MDBInput
-                wrapperClass="mb-4"
-                label="Password"
-                size="lg"
-                id="Password"
-                type="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
-              />
-
-              <div className="d-flex justify-content-between mx-3 mb-4">
-                <MDBCheckbox
-                  name="flexCheck"
-                  value=""
-                  id="flexCheckDefault"
-                  label="Remember me"
+                <MDBInput
+                  wrapperClass="mb-4"
+                  label="Your Email"
+                  size="lg"
+                  id="Email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email"
                 />
-                <a href="#!">Forgot password?</a>
-              </div>
 
-              <MDBBtn className="mb-4" onClick={submit}>
-                Sign in
-              </MDBBtn>
+                <MDBInput
+                  wrapperClass="mb-4"
+                  label="Password"
+                  size="lg"
+                  id="Password"
+                  type="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Password"
+                />
 
-              <div className="text-center">
-                <p>
-                  Not a member? <Link to="/signup">Sign up</Link>
-                </p>
-              </div>
+                <div className="d-flex justify-content-between mx-3 mb-4">
+                  <MDBCheckbox
+                    name="flexCheck"
+                    value=""
+                    id="flexCheckDefault"
+                    label="Remember me"
+                  />
+                  <a href="#!">Forgot password?</a>
+                </div>
 
-            </MDBCardBody>
-          </MDBCard>
-        </div>
-      </MDBContainer>
+                <MDBBtn className="mb-4" onClick={submit}>
+                  Sign in
+                </MDBBtn>
+
+                <div className="text-center">
+                  <p>
+                    Not a member? <Link to="/signup">Sign up</Link>
+                  </p>
+                </div>
+
+              </MDBCardBody>
+            </MDBCard>
+          </div>
+        </MDBContainer>
+      </div>
     </form>
   );
 }
