@@ -4,7 +4,7 @@ import axios from 'axios';
 import { MDBCard, MDBCardBody, MDBInput } from 'mdb-react-ui-kit';
 
 function ChangePassword() {
-  const [emailOrUsername, setEmailOrUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -14,7 +14,7 @@ function ChangePassword() {
     e.preventDefault();
 
     // Validate the form inputs
-    if (emailOrUsername === '') {
+    if (email === '') {
       setErrorMessage('Please enter your email or username.');
       return;
     }
@@ -41,12 +41,12 @@ function ChangePassword() {
 
     try {
       // Call the API to update the password
-      const response = await axios.put(`http://localhost:8000/update/${emailOrUsername}`, {
+      const response = await axios.put(`http://localhost:8000/update/${email}`, {
         newPassword: newPassword,
       });
 
       // Reset the form fields
-      setEmailOrUsername('');
+      setEmail('');
       setCurrentPassword('');
       setNewPassword('');
       setConfirmPassword('');
@@ -112,8 +112,8 @@ function ChangePassword() {
                 <MDBInput
                   label="Email/Username"
                   type="text"
-                  value={emailOrUsername}
-                  onChange={(e) => setEmailOrUsername(e.target.value)}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email or Username"
                 />
                 <MDBInput
@@ -142,7 +142,7 @@ function ChangePassword() {
                   <Button
                     variant="primary"
                     type="submit"
-                    style={{ backgroundColor: 'white', color: '#05652D', width: '300px' }}
+                    style={{ backgroundColor: 'blue', color: '#05652D', width: '300px' }}
                   >
                     Change Password
                   </Button>
