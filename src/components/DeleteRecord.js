@@ -35,9 +35,9 @@ function DeleteRecord() {
 
   return (
     <div>
-       <nav className="navbar navbar-expand-lg navbar-light bg-light">
+       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
   <a className="navbar-brand" href="/">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Bureau_of_Jail_Management_and_Penology.png" alt="Logo" width="40" height="40" className="d-inline-block align-top" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Bureau_of_Jail_Management_and_Penology.png" alt="Logo" width="40" height="40" className="d-inline-block align-top" style={{ marginLeft: '20px' }} />
     <span className="ml-2" style={{ marginLeft: '10px' }}>BJMP Employee Scheduling</span>
   </a>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

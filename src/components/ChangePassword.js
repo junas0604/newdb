@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Container, Button } from 'react-bootstrap';
+import { Container} from 'react-bootstrap';
 import axios from 'axios';
-import { MDBCard, MDBCardBody, MDBInput } from 'mdb-react-ui-kit';
+import { MDBCard, MDBCardBody, MDBInput, MDBBtn } from 'mdb-react-ui-kit';
+
 
 function ChangePassword() {
   const [email, setEmail] = useState('');
@@ -63,9 +64,9 @@ function ChangePassword() {
 
   return (
     <div className="div1">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
   <a className="navbar-brand" href="/">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Bureau_of_Jail_Management_and_Penology.png" alt="Logo" width="40" height="40" className="d-inline-block align-top" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Bureau_of_Jail_Management_and_Penology.png" alt="Logo" width="40" height="40" className="d-inline-block align-top" style={{ marginLeft: '20px' }} />
     <span className="ml-2" style={{ marginLeft: '10px' }}>BJMP Employee Scheduling</span>
   </a>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -113,7 +114,7 @@ function ChangePassword() {
           <MDBCard className='m-5' style={{ maxWidth: '600px' }}>
             <MDBCardBody className='px-5'>
 
-              <h2>WELCOME TO CHANGE PASSWORD RECORD FORM</h2>
+              <h2 className="text-center mb-5">CHANGE PASSWORD</h2>
               {errorMessage && <div className="error">{errorMessage}</div>}
               <form onSubmit={handleSubmit}>
                 <MDBInput
@@ -146,13 +147,12 @@ function ChangePassword() {
                 />
 
                 <div className="d-flex justify-content-center mt-4">
-                  <Button
+                  < MDBBtn className="mb-4"
                     variant="primary"
                     type="submit"
-                    style={{ backgroundColor: 'blue', color: '#05652D', width: '300px' }}
                   >
                     Change Password
-                  </Button>
+                  </MDBBtn>
                 </div>
               </form>
             </MDBCardBody>

@@ -38,9 +38,9 @@ function Login() {
   
   return (
     <form>
-     <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
   <a className="navbar-brand" href="/">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Bureau_of_Jail_Management_and_Penology.png" alt="Logo" width="40" height="40" className="d-inline-block align-top" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Bureau_of_Jail_Management_and_Penology.png" alt="Logo" width="40" height="40" className="d-inline-block align-top" style={{ marginLeft: '20px' }} />
     <span className="ml-2" style={{ marginLeft: '10px' }}>BJMP Employee Scheduling</span>
   </a>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +49,7 @@ function Login() {
   <div className="collapse navbar-collapse" id="navbarNav">
     <ul className="navbar-nav">
       <li className="nav-item">
-        <a className="nav-link" href="/Home">Home <span className="sr-only"></span></a>
+        <a className="nav-link" href="/">Home <span className="sr-only"></span></a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="/Login">Login</a>
@@ -60,6 +60,7 @@ function Login() {
     </ul>
   </div>
 </nav>
+
 
 
       <div
@@ -87,17 +88,18 @@ function Login() {
           <div className='mask gradient-custom-3'>
             <MDBCard className='m-5' style={{ maxWidth: '600px' }}>
               <MDBCardBody className='px-5 text-center'>
-                <h2 className="text-uppercase text-center mb-5">Jail Guard Officer Login Form</h2>
+                <h2 className="text-uppercase text-center mb-5">Login Form</h2>
 
                 <MDBInput
                   wrapperClass="mb-4"
-                  label="Your Email"
+                  label="Email Address"
                   size="lg"
                   id="Email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email"
+
                 />
 
                 <MDBInput
@@ -118,7 +120,7 @@ function Login() {
                     id="flexCheckDefault"
                     label="Remember me"
                   />
-                  <a href="#!">Forgot password?</a>
+                  <a href="#!" style={{ marginLeft: '30px' }}>Forgot password?</a>
                 </div>
 
                 <MDBBtn className="mb-4" onClick={submit}>
