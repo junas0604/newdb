@@ -15,6 +15,10 @@ function Home() {
     history("/Login");
   };
 
+  const handleProfileClick3 = () => {
+    history("/ChangePassword");
+  };
+
  
 
   return (
@@ -68,7 +72,13 @@ function Home() {
               {/* Profile Button */}
               <div className="text-center">
               <MDBBtn className="mb-4" onClick={handleProfileClick}>
-                Delete Account
+                More Options
+              </MDBBtn>
+              </div>
+
+              <div className="text-center">
+              <MDBBtn className="mb-4" onClick={handleProfileClick3}>
+                Change Password
               </MDBBtn>
               </div>
 
@@ -77,6 +87,8 @@ function Home() {
                 Logout
               </MDBBtn>
               </div>
+
+              
              
             </MDBCardBody>
           </MDBCard>

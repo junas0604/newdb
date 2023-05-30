@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 import axios from 'axios';
-import { MDBCard, MDBCardBody } from "mdb-react-ui-kit";
+import { MDBCard, MDBCardBody, MDBInput } from 'mdb-react-ui-kit';
 
 function DeleteRecord() {
-
   const [email, setEmail] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -36,22 +35,38 @@ function DeleteRecord() {
 
   return (
     <div>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="/Homepage">Jail Management System</a>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <a className="navbar-brand" href="/Homepage">
+          Jail Management System
+        </a>
 
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="/Homepage">Home <span class="sr-only"></span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/Login">Login</a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link" href="/Signup">Registration</a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <a className="nav-link" href="/Homepage">
+                Home <span className="sr-only"></span>
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/Login">
+                Login
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/Signup">
+                Registration
+              </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/DeleteRecord">
@@ -61,34 +76,42 @@ function DeleteRecord() {
           </ul>
         </div>
       </nav>
-   
-      <Container fluid style={{ backgroundColor: 'Grey', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <div className='mask gradient-custom-3'>
-          <MDBCard className='m-5' style={{ maxWidth: '600px' }}>
-            <MDBCardBody className='px-5'>
 
+      <Container
+        fluid
+        style={{
+          backgroundColor: 'Grey',
+          height: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <div className="mask gradient-custom-3">
+          <MDBCard className="m-5" style={{ maxWidth: '600px' }}>
+            <MDBCardBody className="px-5">
               <h2>WELCOME TO DELETE RECORD FORM</h2>
               {errorMessage && <div className="error">{errorMessage}</div>}
-              <Form onSubmit={handleSubmit}>
-                <Form.Group controlId="email">
-                  <Form.Label>Enter the Email that you want to delete</Form.Label>
-                  <Form.Control
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Email"
-                  />
-                </Form.Group>
+              <form onSubmit={handleSubmit}>
+                <MDBInput
+                  label="Enter the Email that you want to delete"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                />
                 <p></p>
                 <p></p>
                 <Button
                   variant="danger"
                   type="submit"
-                  style={{ backgroundColor: '#FF0000' }}
+                  style={{ backgroundColor: 'blue', margin: 'auto', display: 'block' }}
                 >
                   Delete Record
                 </Button>
-              </Form>
+              </form>
             </MDBCardBody>
           </MDBCard>
         </div>
@@ -97,4 +120,4 @@ function DeleteRecord() {
   );
 }
 
-export default DeleteRecord
+export default DeleteRecord;

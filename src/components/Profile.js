@@ -81,11 +81,11 @@ function Profile() {
                   Logout
                 </MDBBtn>
               </div>
-
+              <div className="text-center">
               <MDBBtn className="mb-4" onClick={handleProfileClick1}>
                   Delete an Account
                 </MDBBtn>
-
+                </div>
             </MDBCardBody>
           </MDBCard>
         </div>

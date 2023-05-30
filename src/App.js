@@ -3,6 +3,7 @@ import Login from "./components/Login"
 import Signup from "./components/Signup"
 import Profile from "./components/Profile"
 import DeleteRecord from "./components/DeleteRecord"
+import ChangePassword from "./components/ChangePassword"
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/Profile" element={<Profile/>} />
           <Route path="/DeleteRecord" element={<DeleteRecord/>} />
+          <Route path="/ChangePassword" element={<ChangePassword/>} />
         </Routes>
       </Router>
     </div>

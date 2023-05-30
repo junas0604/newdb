@@ -1,5 +1,5 @@
 const express = require("express")
-const collection = require("./mongo")
+const collection = require("./mongoDB")
 const cors = require("cors")
 const app = express()
 app.use(express.json())
@@ -28,7 +28,7 @@ app.post("/", async (req, res) => {
 
 async function getData() {
   try {
-    await mongoose.connect("mongodb+srv://your-mongodb-connection-string");
+    await mongoose.connect("mongodb+srv://james:bulfa28@cluster0.l271i8b.mongodb.net/");
     const data = await collection.find();
     return data;
   } catch (error) {
@@ -80,15 +80,33 @@ app.delete("/delete/:email", async (req, res) => {
   try {
     const { email } = req.params;
 
-    const deletedRecord = await collection.findOneAndDelete({ email: email });
+    const deletedR = await collection.findOneAndDelete({ email: email });
 
-    if (!deletedRecord) {
+    if (!deletedR) {
       return res.status(404).send("Record not found");
     }
 
-    res.send(deletedRecord);
+    res.send(deletedR);
   } catch (error) {
     res.status(500).send(error);
+  }
+});
+
+app.put("/update/:email", async (req, res) => {
+  try {
+    const { email } = req.params;
+    const { newPassword } = req.body;
+
+    const changePass= await collection.findOneAndUpdate(
+      { email: email },
+      { $set: { password: newPassword } },
+      { returnOriginal: false }
+    );
+
+    res.send(changePass);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("ERROR OCCURRED");
   }
 });
 
