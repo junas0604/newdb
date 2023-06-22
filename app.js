@@ -28,7 +28,7 @@ app.post("/", async (req, res) => {
 
 async function getData() {
   try {
-    await mongoose.connect("mongodb+srv://james:bulfa28@cluster0.l271i8b.mongodb.net/");
+    await mongoose.connect("mongodb+srv://junasnazarito:gutib04@cluster0.hogzp7v.mongodb.net/user");
     const data = await collection.find();
     return data;
   } catch (error) {

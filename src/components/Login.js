@@ -10,12 +10,20 @@ import {
   MDBCardBody
 } from "mdb-react-ui-kit";
 
+
+
 function Login() {
   const history = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [selectedOption, setSelectedOption] = useState('');
 
+
+  const handleSelect = (event) => {
+    setSelectedOption(event.target.value);
+  };
+  
   async function submit(e) {
     e.preventDefault();
   
@@ -88,7 +96,7 @@ function Login() {
           <div className='mask gradient-custom-3'>
             <MDBCard className='m-5' style={{ maxWidth: '600px' }}>
               <MDBCardBody className='px-5 text-center'>
-                <h2 className="text-uppercase text-center mb-5">Login Form</h2>
+              <h2 className="text-uppercase text-center mb-5" style={{ fontWeight: "bold" }}>Login Account</h2>
 
                 <MDBInput
                   wrapperClass="mb-4"
@@ -111,9 +119,24 @@ function Login() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Password"
-                />
+                />  
+
+                
+<div>
+  <select
+    value={selectedOption}
+    onChange={handleSelect}
+    style={{ fontSize: "18px", padding: "10px", borderRadius: "5px", width: "320px" }}
+  >
+    <option value="Officer">Officer</option>
+    <option value="Admin">Admin</option>
+  </select>
+</div>
+
+                <p>Login as</p>
 
                 <div className="d-flex justify-content-between mx-3 mb-4">
+                  
                   <MDBCheckbox
                     name="flexCheck"
                     value=""
@@ -122,6 +145,8 @@ function Login() {
                   />
                   <a href="#!" style={{ marginLeft: '30px' }}>Forgot password?</a>
                 </div>
+
+                
 
                 <MDBBtn className="mb-4" onClick={submit}>
                   Sign in
