@@ -5,6 +5,7 @@ import Profile from "./components/Profile"
 import DeleteRecord from "./components/DeleteRecord"
 import ChangePassword from "./components/ChangePassword"
 import HomePage from "./components/HomePage"
+import Test from "./components/Test"
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/Profile" element={<Profile/>} />
           <Route path="/DeleteRecord" element={<DeleteRecord/>} />
           <Route path="/ChangePassword" element={<ChangePassword/>} />
+          <Route path="/Test" element={<Test/>} />
         </Routes>
       </Router>
     </div>

@@ -36,7 +36,7 @@ function Login() {
       });
   
       if (response.data === "exist") {
-        history("/home", { state: { id: email } });
+        history("/HomePage", { state: { id: email } });
       } else if (response.data === "notexist") {
         alert("Invalid email or password");
       }

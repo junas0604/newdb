@@ -28,7 +28,7 @@ app.post("/", async (req, res) => {
 
 async function getData() {
   try {
-    await mongoose.connect("mongodb+srv://junasnazarito:gutib04@cluster0.hogzp7v.mongodb.net/user");
+    await mongoose.connect("mongodb+srv://junasnazarito:gutib04@cluster0.hogzp7v.mongodb.net/");
     const data = await collection.find();
     return data;
   } catch (error) {
@@ -40,9 +40,13 @@ async function getData() {
 }
 
 // Route to render the page with the data
-app.get("/", async (req, res) => {
-  const data = await getData();
-  res.render("index", { data });
+app.get('/api/data', async (req, res) => {
+  try {
+    const data = await Data.find();
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch data from MongoDB.' });
+  }
 });
 
 
