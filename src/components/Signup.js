@@ -19,6 +19,9 @@ function Signup() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [RePassword, setRePassword] = useState('');
+    const [fullName, setfullName] = useState('');
+    const [phoneNumber, setphoneNumber] = useState('');
+    const [rank, setRank] = useState('');
 
     async function submit(e) {
         e.preventDefault();
@@ -26,7 +29,11 @@ function Signup() {
         try {
             const response = await axios.post("http://localhost:8000/signup", {
                 email,
-                password
+                password,
+                fullName,
+                phoneNumber,
+                rank,
+
             });
 
             if (response.data === "exist") {
@@ -51,7 +58,7 @@ function Signup() {
     <span className="navbar-toggler-icon"></span>
   </button>
   <div className="collapse navbar-collapse" id="navbarNav">
-    <ul className="navbar-nav">
+    <ul className="navbar-nav" style={{ marginLeft: '780px' }}>
       <li className="nav-item">
         <a className="nav-link" href="/">Home <span className="sr-only"></span></a>
       </li>
@@ -64,14 +71,13 @@ function Signup() {
     </ul>
   </div>
 </nav>
-
             <div
         className="bg-image"
         style={{
           backgroundImage: `url("https://www.bjmp.gov.ph/images/files/107507100_197367938408005_8328798389745902524_o.jpg")`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
-          height: '112vh',
+          height: '150vh',
         }}
       >
          <div
@@ -82,7 +88,7 @@ function Signup() {
             top: 65,
             left: 0,
             width: '100%',
-            height: '112.1%',
+            height: '150.1%',
           }}
         ></div>
 
@@ -91,14 +97,19 @@ function Signup() {
                     <MDBCard className='m-5' style={{ maxWidth: '600px' }}>
                         <MDBCardBody className='px-5'>
                             <MDBRow>
-                                <h2 className="text-uppercase text-center mb-5">Registration Form</h2>
+                                <h2 className="text-uppercase text-center mb-5">Create Account</h2>
 
+                                <MDBInput wrapperClass="mb-4" label="Full Name" size="lg" id="fullName" type="text" value={fullName} onChange={(e) => setfullName(e.target.value)} />
                                 
-                                <MDBInput wrapperClass='mb-4' label='Your Email' size='lg' id='Email' type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                                <MDBInput wrapperClass='mb-4' label='Email Address' size='lg' id='Email' type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+
+                                <MDBInput wrapperClass='mb-4' label='Phone Number' size='lg' id='phoneNumber' type='phoneNumber' value={phoneNumber} onChange={(e) => setphoneNumber(e.target.value)} />
+
+                                <MDBInput wrapperClass='mb-4' label='Rank/Position' size='lg' id='rank' type='text' value={rank} onChange={(e) => setRank(e.target.value)} />
 
                                 <MDBInput wrapperClass='mb-4' label='Password' size='lg' id='Password' type='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
 
-                                <MDBInput wrapperClass='mb-4' label='Re-Password' size='lg' id='RePassword' type='Password' value={RePassword} onChange={(e) => setRePassword(e.target.value)} />
+                                <MDBInput wrapperClass='mb-4' label='Confirm Password' size='lg' id='RePassword' type='Password' value={RePassword} onChange={(e) => setRePassword(e.target.value)} />
 
 
                                 <MDBBtn className="mb-4" size="lg" onClick={submit}>

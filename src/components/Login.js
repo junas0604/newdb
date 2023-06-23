@@ -15,8 +15,10 @@ import {
 function Login() {
   const history = useNavigate();
 
+ 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  
   const [selectedOption, setSelectedOption] = useState('');
 
 
@@ -90,13 +92,16 @@ function Login() {
             width: '100%',
             height: '110%',
           }}
-        ></div>
+        />
         
         <MDBContainer fluid className="d-flex align-items-center justify-content-center">
           <div className='mask gradient-custom-3'>
             <MDBCard className='m-5' style={{ maxWidth: '600px' }}>
               <MDBCardBody className='px-5 text-center'>
               <h2 className="text-uppercase text-center mb-5" style={{ fontWeight: "bold" }}>Login Account</h2>
+
+                
+                
 
                 <MDBInput
                   wrapperClass="mb-4"
@@ -107,7 +112,6 @@ function Login() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email"
-
                 />
 
                 <MDBInput

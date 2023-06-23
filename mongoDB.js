@@ -17,9 +17,22 @@ const newSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },      
+    fullName: {
+        type: String,
+        required: true
+    },
+    phoneNumber: {
+        type: String,
+        required: true
+    },
+    rank: {
+        type: String,
+        required: true
     }
+    
 })
 
-const collection = mongoose.model("collection", newSchema)
+const collection = mongoose.model("AdminAccounts", newSchema)
 
 module.exports = collection
