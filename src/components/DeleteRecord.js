@@ -25,7 +25,7 @@ function DeleteRecord() {
       setErrorMessage('');
 
       // Show a success message
-      alert(response.data);
+      alert(response.data +"\nAccount Successfully Deleted");
     } catch (error) {
       // Handle the error
       console.error('Error deleting record:', error);
@@ -46,7 +46,7 @@ function DeleteRecord() {
   <div className="collapse navbar-collapse" id="navbarNav">
     <ul className="navbar-nav">
       <li className="nav-item">
-        <a className="nav-link" href="/">Home <span className="sr-only"></span></a>
+      <a className="nav-link" href="/HomePage">Home <span className="sr-only"></span></a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="/Login">Login</a>

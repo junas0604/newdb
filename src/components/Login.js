@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import {
@@ -10,33 +10,47 @@ import {
   MDBCardBody
 } from "mdb-react-ui-kit";
 
-
-
 function Login() {
   const history = useNavigate();
-
- 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
   const [selectedOption, setSelectedOption] = useState('');
-
 
   const handleSelect = (event) => {
     setSelectedOption(event.target.value);
   };
-  
+
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('http://localhost:8000/'); // Replace '/api/data' with your actual API endpoint
+      setData(response.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
   async function submit(e) {
     e.preventDefault();
-  
+
     try {
       const response = await axios.post("http://localhost:8000/", {
         email,
         password,
       });
-  
-      if (response.data === "exist") {
-        history("/HomePage", { state: { id: email } });
+
+      const user = data.find((user) => user.email === email); // Assuming data contains user information including rank
+
+      if (response.data === "exist" && user && user.rank === selectedOption) {
+        if (selectedOption === "Admin") {
+          history("/HomePage", { state: { id: email } });
+        } else if (selectedOption === "Jail Officer") {
+          history("/Signup", { state: { id: email } });
+        }
       } else if (response.data === "notexist") {
         alert("Invalid email or password");
       }
@@ -45,7 +59,6 @@ function Login() {
       console.log(error);
     }
   }
-  
   return (
     <form>
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -58,9 +71,6 @@ function Login() {
   </button>
   <div className="collapse navbar-collapse" id="navbarNav">
     <ul className="navbar-nav" style={{ marginLeft: '780px' }}>
-      <li className="nav-item">
-        <a className="nav-link" href="/">Home <span className="sr-only"></span></a>
-      </li>
       <li className="nav-item">
         <a className="nav-link" href="/Login">Login</a>
       </li>
@@ -126,16 +136,15 @@ function Login() {
                 />  
 
                 
-<div>
-  <select
-    value={selectedOption}
-    onChange={handleSelect}
-    style={{ fontSize: "18px", padding: "10px", borderRadius: "5px", width: "320px" }}
-  >
-    <option value="Officer">Officer</option>
-    <option value="Admin">Admin</option>
-  </select>
-</div>
+                  <div>
+                    <select
+                      value={selectedOption}
+                      onChange={handleSelect}
+                       style={{ fontSize: "18px", padding: "10px", borderRadius: "5px", width: "320px" }}>
+                         <option value="Admin">Admin</option>
+                         <option value="Jail Officer">Jail Officer</option>
+                     </select>
+                    </div>
 
                 <p>Login as</p>
 

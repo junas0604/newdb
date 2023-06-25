@@ -37,7 +37,7 @@ function HomePage() {
 
   return (
     <form>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <a className="navbar-brand" href="/">
           <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Bureau_of_Jail_Management_and_Penology.png" alt="Logo" width="40" height="40" className="d-inline-block align-top" style={{ marginLeft: '20px' }} />
           <span className="ml-2" style={{ marginLeft: '10px' }}>BJMP Employee Scheduling</span>
@@ -46,9 +46,9 @@ function HomePage() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav" style={{ marginLeft: '780px' }}>
+          <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <a className="nav-link" href="/">Home <span className="sr-only"></span></a>
+              <a className="nav-link" href="/HomePage"style={{ marginLeft: '780px'}}>Home <span className="sr-only"></span></a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/Login">Login</a>
@@ -94,7 +94,11 @@ function HomePage() {
                     <thead>
                       <tr>
                         <th colSpan="4">
-                          {currentMonth} {currentDay}, {currentYear}
+                        <th colSpan="4" style={{ padding: "11px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+  <img src='https://w7.pngwing.com/pngs/558/76/png-transparent-computer-icons-google-calendar-time-wall-clock-text-calendar-logo.png' alt="Logo" style={{ width: '30px', marginRight: '11px' }} />
+  {currentMonth} {currentDay}, {currentYear}
+  <img src='https://w7.pngwing.com/pngs/558/76/png-transparent-computer-icons-google-calendar-time-wall-clock-text-calendar-logo.png' alt="Logo" style={{ width: '30px', marginLeft: '11px' }} />
+</th>
                         </th>
                       </tr>
                       <tr>

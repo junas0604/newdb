@@ -54,7 +54,7 @@ function ChangePassword() {
       setErrorMessage('');
 
       // Show a success message
-      alert(response.data);
+      alert(response.data +"\n Your Password is Succesfully Changed");
     } catch (error) {
       // Handle the error
       console.error('Error updating password:', error);
@@ -75,7 +75,7 @@ function ChangePassword() {
   <div className="collapse navbar-collapse" id="navbarNav">
     <ul className="navbar-nav">
       <li className="nav-item">
-        <a className="nav-link" href="/">Home <span className="sr-only"></span></a>
+      <a className="nav-link" href="/HomePage">Home <span className="sr-only"></span></a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="/Login">Login</a>
