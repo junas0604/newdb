@@ -33,7 +33,6 @@ function Signup() {
                 fullName,
                 phoneNumber,
                 rank,
-
             });
 
             if (response.data === "exist") {

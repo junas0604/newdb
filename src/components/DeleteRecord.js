@@ -25,7 +25,7 @@ function DeleteRecord() {
       setErrorMessage('');
 
       // Show a success message
-      alert(response.data +"\nAccount Successfully Deleted");
+      alert(response.data+"\nAccount Succesfully Deleted");
     } catch (error) {
       // Handle the error
       console.error('Error deleting record:', error);

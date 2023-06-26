@@ -6,6 +6,7 @@ import DeleteRecord from "./components/DeleteRecord"
 import ChangePassword from "./components/ChangePassword"
 import HomePage from "./components/HomePage"
 import Test from "./components/Test"
+import AddSchedule from "./components/AddSchedule"
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -14,15 +15,17 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Login/>} />
           <Route path="/Login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/Signup" element={<Signup />} />
+          <Route path="/Home" element={<Home />} />
           <Route path="/HomePage" element={<HomePage/>} />
           <Route path="/Profile" element={<Profile/>} />
           <Route path="/DeleteRecord" element={<DeleteRecord/>} />
           <Route path="/ChangePassword" element={<ChangePassword/>} />
           <Route path="/Test" element={<Test/>} />
+          <Route path="/AddSchedule" element={<AddSchedule/>} />
+          
         </Routes>
       </Router>
     </div>

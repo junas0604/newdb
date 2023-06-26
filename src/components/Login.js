@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link} from "react-router-dom";
 import axios from "axios";
 import {
   MDBContainer,
@@ -40,16 +40,17 @@ function Login() {
     try {
       const response = await axios.post("http://localhost:8000/", {
         email,
-        password,
+        password
       });
 
       const user = data.find((user) => user.email === email); // Assuming data contains user information including rank
 
-      if (response.data === "exist" && user && user.rank === selectedOption) {
+      if (response.data === "exist" && user.rank === selectedOption) {
         if (selectedOption === "Admin") {
           history("/HomePage", { state: { id: email } });
-        } else if (selectedOption === "Jail Officer") {
-          history("/Signup", { state: { id: email } });
+        } 
+        if (selectedOption === "Jail Officer") {
+          history("/DeleteRecord", { state: { id: email } });
         }
       } else if (response.data === "notexist") {
         alert("Invalid email or password");
