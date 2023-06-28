@@ -11,7 +11,7 @@ import {
 } from "mdb-react-ui-kit";
 
 function Login() {
-  const history = useNavigate();
+  const navigation = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [selectedOption, setSelectedOption] = useState('');
@@ -36,21 +36,22 @@ function Login() {
 
   async function submit(e) {
     e.preventDefault();
-
+  
     try {
       const response = await axios.post("http://localhost:8000/", {
         email,
         password
       });
-
+  
       const user = data.find((user) => user.email === email); // Assuming data contains user information including rank
-
+  
       if (response.data === "exist" && user.rank === selectedOption) {
-        if (selectedOption === "Admin") {
-          history("/HomePage", { state: { id: email } });
-        } 
-        if (selectedOption === "Jail Officer") {
-          history("/DeleteRecord", { state: { id: email } });
+        if (selectedOption === 'Admin') {
+          navigation("/AddSchedule", { state: { id: email } });
+          console.log(user.rank);
+        } else if (selectedOption === "Jail Officer") {
+          navigation("/DeleteRecord", { state: { id: email } });
+          console.log(user.rank);
         }
       } else if (response.data === "notexist") {
         alert("Invalid email or password");
@@ -139,8 +140,7 @@ function Login() {
                 
                   <div>
                     <select
-                      value={selectedOption}
-                      onChange={handleSelect}
+                      value={selectedOption} onChange={handleSelect}
                        style={{ fontSize: "18px", padding: "10px", borderRadius: "5px", width: "320px" }}>
                          <option value="Admin">Admin</option>
                          <option value="Jail Officer">Jail Officer</option>

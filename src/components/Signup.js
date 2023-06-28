@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import React, { useState } from "react";
-import { useNavigate} from "react-router-dom";
+import { useNavigate, Link} from "react-router-dom";
 import axios from "axios";
 import {
     MDBBtn,
@@ -115,7 +115,11 @@ function Signup() {
                                     Register
                                 </MDBBtn>
 
-
+                                <div className="text-center">
+                                  <p>
+                                    Already Have an Account? <Link to="/Login">Login</Link>
+                                  </p>
+                                </div>
 
                                 <MDBCol md="10" lg="6" className="order-1 order-lg-2 d-flex align-items-center">
                                     <MDBCardImage src="" fluid />
@@ -125,8 +129,9 @@ function Signup() {
 
 
                     </MDBCard>
-
+                    
                 </div>
+                
             </MDBContainer>
             </div>
         </form>

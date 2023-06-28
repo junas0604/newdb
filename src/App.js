@@ -7,6 +7,7 @@ import ChangePassword from "./components/ChangePassword"
 import HomePage from "./components/HomePage"
 import Test from "./components/Test"
 import AddSchedule from "./components/AddSchedule"
+import About from "./components/About"
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/ChangePassword" element={<ChangePassword/>} />
           <Route path="/Test" element={<Test/>} />
           <Route path="/AddSchedule" element={<AddSchedule/>} />
+          <Route path="/About" element={<About/>} />
           
         </Routes>
       </Router>

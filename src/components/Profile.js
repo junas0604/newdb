@@ -6,6 +6,7 @@ import {
   MDBCardBody,
   MDBBtn
 } from "mdb-react-ui-kit";
+import Dropdown from 'react-bootstrap/Dropdown';
 
 
 function Profile() {
@@ -30,28 +31,56 @@ function Profile() {
   return (
     <form>
      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a className="navbar-brand" href="/">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Bureau_of_Jail_Management_and_Penology.png" alt="Logo" width="40" height="40" className="d-inline-block align-top" style={{ marginLeft: '20px' }} />
-    <span className="ml-2" style={{ marginLeft: '10px' }}>BJMP Employee Scheduling</span>
-  </a>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
-  <div className="collapse navbar-collapse" id="navbarNav">
-    <ul className="navbar-nav">
-      <li className="nav-item">
-      <a className="nav-link" href="/HomePage">Home <span className="sr-only"></span></a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="/Login">Login</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="/Signup">Registration</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+          <a className="navbar-brand" href="/HomePage">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/9/97/Bureau_of_Jail_Management_and_Penology.png"
+              alt="Logo"
+              width="40"
+              height="40"
+              className="d-inline-block align-top"
+              style={{ marginLeft: '20px' }}
+            />
+            <span className="ml-2" style={{ marginLeft: '10px' }}>
+              BJMP Employee Scheduling
+            </span>
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item">
+                <a className="nav-link" href="/HomePage" style={{ marginLeft: '780px' }}>
+                  Home <span className="sr-only"></span>
+                </a>
+              </li>
+            </ul>
+            <div>
+              <Dropdown>
+                <Dropdown.Toggle className="bg-dark" variant="success" id="dropdown-basic">
+                  Dropdown Button
+                </Dropdown.Toggle>
 
+                <Dropdown.Menu>
+                  <Dropdown.Item href="/HomePage">Dashboard</Dropdown.Item>
+                  <Dropdown.Item href="/Profile">View Profile</Dropdown.Item>
+                  <Dropdown.Item href="/AddSchedule">Create Schedule</Dropdown.Item>
+                  <Dropdown.Item href="/ChangePassword">Edit Password</Dropdown.Item>
+                  <Dropdown.Item href="/DeleteRecord">Delete Record</Dropdown.Item>
+                  <Dropdown.Item href="/Login">Logout</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+          </div>
+        </nav>
 
       <div
         className="bg-image"

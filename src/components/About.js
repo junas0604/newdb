@@ -1,41 +1,29 @@
-import React, { useState } from 'react';
-import { Container, Button } from 'react-bootstrap';
-import axios from 'axios';
-import { MDBCard, MDBCardBody, MDBInput } from 'mdb-react-ui-kit';
+import React from "react";
+import { useNavigate} from "react-router-dom";
+import { MDBContainer, MDBCard, MDBCardBody, MDBBtn } from "mdb-react-ui-kit";
 import Dropdown from 'react-bootstrap/Dropdown';
 
-function DeleteRecord() {
-  const [email, setEmail] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+function About() {
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const history = useNavigate();
 
-    // Validate the form input
-    if (email === '') {
-      setErrorMessage('Please enter the email of the record to delete.');
-      return;
-    }
 
-    try {
-      // Call the API to delete the record
-      const response = await axios.delete(`http://localhost:8000/delete/${email}`);
-
-      // Reset the form field
-      setEmail('');
-      setErrorMessage('');
-
-      // Show a success message
-      alert(response.data+"\nAccount Succesfully Deleted");
-    } catch (error) {
-      // Handle the error
-      console.error('Error deleting record:', error);
-      setErrorMessage('Failed to delete record. Please try again.');
-    }
+  const handleProfileClick = () => {
+    history("/Profile");
   };
 
+  const handleProfileClick2 = () => {
+    history("/Login");
+  };
+
+  const handleProfileClick3 = () => {
+    history("/ChangePassword");
+  };
+
+ 
+
   return (
-    <div>
+    <form>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <a className="navbar-brand" href="/HomePage">
             <img
@@ -95,7 +83,8 @@ function DeleteRecord() {
           backgroundImage: `url("https://www.bjmp.gov.ph/images/files/107507100_197367938408005_8328798389745902524_o.jpg")`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
-          height: '112vh',
+          height: '160vh',
+          
         }}
       >
          <div
@@ -106,51 +95,52 @@ function DeleteRecord() {
             top: 65,
             left: 0,
             width: '100%',
-            height: '112.1%',
+            height: '160%',
           }}
         ></div>
 
-      <Container
-        fluid
-        style={{
-          height: '100vh',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
+      <MDBContainer fluid className="d-flex align-items-center justify-content-center bg-image" >
         <div className="mask gradient-custom-3">
-          <MDBCard className="m-5" style={{ maxWidth: '600px' }}>
+          <MDBCard className="m-5" style={{ maxWidth: "600px" }}>
             <MDBCardBody className="px-5">
-              <h2>WELCOME TO DELETE RECORD FORM</h2>
-              {errorMessage && <div className="error">{errorMessage}</div>}
-              <form onSubmit={handleSubmit}>
-                <MDBInput
-                  label="Enter the Email that you want to delete"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  id="email"
-                  name="email"
-                  placeholder="Email"
-                />
-                <p></p>
-                <p></p>
-                <Button
-                  variant="danger"
-                  type="submit"
-                  style={{ backgroundColor: 'blue', margin: 'auto', display: 'block' }}
-                >
-                  Delete Record
-                </Button>
-              </form>
+            <h1>About us</h1>
+            
+            <h5>About the BJMP (Bureau of Jail Management and Penology): The Bureau kf Jail Management and Penology (BJMP) is a government agency in the Philippines responsoble for he administration and management of the city, district, and municipal jails. Established in 1991, the BJMP aims to ensure the safe custody and rehabilitation of detainees and to promote their humane treatment. The bureau operates under the Department of the Interior and Local Government (DILG) and works closely with other law enforcement agencies to maintain peace and order within the jails.</h5>
+
+            <h5>The BJMP Employee Shift Scheduling refers to the process of organizing and managing work shift for BJMP personnel assigned to various jail facilities. As the BJMP operates 24/7, it isessential to have an efficient scheduling system to ensure adequate staffing coverage and the smooth operation of jails.</h5>
+
+            <h5>The shifft scheduing system takes into account such as the number of available employees, their roles and responsibilities, and the required staffing levels for each shift. It aims to optimize the allocation of resources while ensuring that essential task and responsonsibilities are adequately coverd at all times.</h5>
+              {/* Profile Button */}
+              <div className="text-center">
+              <MDBBtn className="mb-4" onClick={handleProfileClick}>
+                More Options
+              </MDBBtn>
+               &nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp;
+              <MDBBtn className="mb-4" onClick={handleProfileClick3}>
+                Change Password
+              </MDBBtn>
+              &nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;
+              <MDBBtn className="mb-4" onClick={handleProfileClick2}>
+                Logout
+              </MDBBtn>
+              </div>
+
+              
+              
+
+              
+             
             </MDBCardBody>
           </MDBCard>
         </div>
-      </Container>
-    </div>
-    </div>
+      </MDBContainer>
+      </div>
+    </form>
   );
 }
 
-export default DeleteRecord;
+export default About;

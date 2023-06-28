@@ -7,7 +7,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 
 app.post("/", async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password} = req.body;
 
   try {
     const user = await collection.findOne({ email: email,password:password});
