@@ -81,6 +81,7 @@ function DeleteRecord() {
                   <Dropdown.Item href="/AddSchedule">Create Schedule</Dropdown.Item>
                   <Dropdown.Item href="/ChangePassword">Edit Password</Dropdown.Item>
                   <Dropdown.Item href="/DeleteRecord">Delete Record</Dropdown.Item>
+                  <Dropdown.Item href="/About">About Us</Dropdown.Item>
                   <Dropdown.Item href="/Login">Logout</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
@@ -120,9 +121,9 @@ function DeleteRecord() {
         }}
       >
         <div className="mask gradient-custom-3">
-          <MDBCard className="m-5" style={{ maxWidth: '600px' }}>
-            <MDBCardBody className="px-5">
-              <h2>WELCOME TO DELETE RECORD FORM</h2>
+          <MDBCard className="m-5" style={{ maxWidth: '1000px' }}>
+          <MDBCardBody className="px-5" style={{ position: 'relative', zIndex: 2, maxWidth: '1000px' }}>
+              <h2 style={{fontWeight: 'bold'}}>DELETE RECORD FORM</h2>
               {errorMessage && <div className="error">{errorMessage}</div>}
               <form onSubmit={handleSubmit}>
                 <MDBInput

@@ -7,10 +7,10 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 
 app.post("/", async (req, res) => {
-  const { email, password} = req.body;
+  const { email, password } = req.body;
 
   try {
-    const user = await collection.findOne({ email: email,password:password});
+    const user = await collection.findOne({ email: email, password: password });
 
     if (user) {
       if (user.password === password) {
@@ -42,7 +42,7 @@ async function getData() {
 // Route to render the page with the data
 app.get('/api/data', async (req, res) => {
   try {
-    const data = await Data.find();
+    const data = await getData();
     res.json(data);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch data from MongoDB.' });
@@ -57,12 +57,12 @@ app.post("/signup", async (req, res) => {
     email: email,
     password: password,
     fullName: fullName,
-    phoneNumber:phoneNumber,
+    phoneNumber: phoneNumber,
     rank: rank
   }
 
   try {
-    const check = await collection.findOne({ email: email,password:password})
+    const check = await collection.findOne({ email: email, password: password })
 
     if (check) {
       res.json("exist")
@@ -104,7 +104,7 @@ app.put("/update/:email", async (req, res) => {
     const { email } = req.params;
     const { newPassword } = req.body;
 
-    const changePass= await collection.findOneAndUpdate(
+    const changePass = await collection.findOneAndUpdate(
       { email: email },
       { $set: { password: newPassword } },
       { returnOriginal: false }

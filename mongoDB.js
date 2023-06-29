@@ -17,7 +17,7 @@ const newSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    },      
+    },
     fullName: {
         type: String,
         required: true
@@ -30,7 +30,7 @@ const newSchema = new mongoose.Schema({
         type: String,
         required: true
     }
-    
+
 })
 
 const collection = mongoose.model("AdminAccounts", newSchema)

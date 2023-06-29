@@ -23,7 +23,7 @@ function AddSchedule() {
     const [endShift, setEndShift] = useState('');
 
     const handleSaveClick = () => {
-        history('/Signup');
+        history('/Signup'); //under construction
     };
 
     return (
@@ -73,6 +73,7 @@ function AddSchedule() {
                   <Dropdown.Item href="/AddSchedule">Create Schedule</Dropdown.Item>
                   <Dropdown.Item href="/ChangePassword">Edit Password</Dropdown.Item>
                   <Dropdown.Item href="/DeleteRecord">Delete Record</Dropdown.Item>
+                  <Dropdown.Item href="/About">About Us</Dropdown.Item>
                   <Dropdown.Item href="/Login">Logout</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
@@ -130,7 +131,7 @@ function AddSchedule() {
                                         onChange={(e) => setEndShift(e.target.value)}
                                     />
                                     <div className='text-center mt-4'>
-                                        <MDBBtn onClick={handleSaveClick}>Save</MDBBtn>
+                                        <MDBBtn onClick={handleSaveClick}>Save</MDBBtn> {/*under construction*/}
                                         &nbsp;&nbsp;&nbsp;
                                         &nbsp;&nbsp;&nbsp;
                                         &nbsp;&nbsp;&nbsp;

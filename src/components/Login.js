@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, Link} from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import {
   MDBContainer,
@@ -36,15 +36,15 @@ function Login() {
 
   async function submit(e) {
     e.preventDefault();
-  
+
     try {
       const response = await axios.post("http://localhost:8000/", {
         email,
         password
       });
-  
+
       const user = data.find((user) => user.email === email); // Assuming data contains user information including rank
-  
+
       if (response.data === "exist" && user.rank === selectedOption) {
         if (selectedOption === 'Admin') {
           navigation("/AddSchedule", { state: { id: email } });
@@ -63,25 +63,25 @@ function Login() {
   }
   return (
     <form>
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a className="navbar-brand" href="/">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Bureau_of_Jail_Management_and_Penology.png" alt="Logo" width="40" height="40" className="d-inline-block align-top" style={{ marginLeft: '20px' }} />
-    <span className="ml-2" style={{ marginLeft: '10px' }}>BJMP Employee Scheduling</span>
-  </a>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
-  <div className="collapse navbar-collapse" id="navbarNav">
-    <ul className="navbar-nav" style={{ marginLeft: '780px' }}>
-      <li className="nav-item">
-        <a className="nav-link" href="/Login">Login</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="/Signup">Registration</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a className="navbar-brand" href="/">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Bureau_of_Jail_Management_and_Penology.png" alt="Logo" width="40" height="40" className="d-inline-block align-top" style={{ marginLeft: '20px' }} />
+          <span className="ml-2" style={{ marginLeft: '10px' }}>BJMP Employee Scheduling</span>
+        </a>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav" style={{ marginLeft: '780px' }}>
+            <li className="nav-item">
+              <a className="nav-link" href="/Login">Login</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/Signup">Registration</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
 
 
@@ -94,7 +94,7 @@ function Login() {
           height: '110vh',
         }}
       >
-         <div
+        <div
           className="overlay"
           style={{
             backgroundColor: 'rgba(0, 0, 0, 0.6)',
@@ -105,15 +105,15 @@ function Login() {
             height: '110%',
           }}
         />
-        
+
         <MDBContainer fluid className="d-flex align-items-center justify-content-center">
           <div className='mask gradient-custom-3'>
             <MDBCard className='m-5' style={{ maxWidth: '600px' }}>
               <MDBCardBody className='px-5 text-center'>
-              <h2 className="text-uppercase text-center mb-5" style={{ fontWeight: "bold" }}>Login Account</h2>
+                <h2 className="text-uppercase text-center mb-5" style={{ fontWeight: "bold" }}>Login Account</h2>
 
-                
-                
+
+
 
                 <MDBInput
                   wrapperClass="mb-4"
@@ -135,22 +135,22 @@ function Login() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Password"
-                />  
+                />
 
-                
-                  <div>
-                    <select
-                      value={selectedOption} onChange={handleSelect}
-                       style={{ fontSize: "18px", padding: "10px", borderRadius: "5px", width: "320px" }}>
-                         <option value="Admin">Admin</option>
-                         <option value="Jail Officer">Jail Officer</option>
-                     </select>
-                    </div>
+
+                <div>
+                  <select
+                    value={selectedOption} onChange={handleSelect}
+                    style={{ fontSize: "18px", padding: "10px", borderRadius: "5px", width: "320px" }}>
+                    <option value="Admin">Admin</option>
+                    <option value="Jail Officer">Jail Officer</option>
+                  </select>
+                </div>
 
                 <p>Login as</p>
 
                 <div className="d-flex justify-content-between mx-3 mb-4">
-                  
+
                   <MDBCheckbox
                     name="flexCheck"
                     value=""
@@ -160,7 +160,7 @@ function Login() {
                   <a href="#!" style={{ marginLeft: '30px' }}>Forgot password?</a>
                 </div>
 
-                
+
 
                 <MDBBtn className="mb-4" onClick={submit}>
                   Sign in
